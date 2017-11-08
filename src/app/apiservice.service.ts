@@ -12,7 +12,7 @@ import 'rxjs/add/observable/throw';
 const api_url = environment.apiUrl;
 
 @Injectable()
-export class ApiserviceService {
+export class ApiService {
 
   headers: any;
 
