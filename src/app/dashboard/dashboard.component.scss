@@ -1,0 +1,111 @@
+$font: Ubuntu;
+
+.search {
+  float: right;
+  margin-right: 90px;
+  margin-top: 7px;
+}
+
+input {
+  outline: none;
+}
+
+input[type="search"], .btn {
+  border: solid 1px #ccc;
+  -webkit-border-radius: 10em;
+  -moz-border-radius: 10em;
+  border-radius: 10em;
+}
+
+input[type="search"] {
+  background: #f7f7f7 url(http://www.endlessicons.com/wp-content/uploads/2015/08/search-icon-2.png) no-repeat -15px center;
+  background-size: 60px;
+  color: transparent;
+  font-family: $font;
+  font-size: 1em;
+  margin-right: 10px;
+  padding: 5px;
+  width: 23px;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-transition: all .9s;
+  -moz-transition: all .9s;
+  transition: all .9s;
+  &:hover {
+    background-color: #98acd7;
+  }
+  &:focus {
+    width: 200px;
+    padding-left: 30px;
+    color: black;
+    background-color: #f7f7f7;
+    border-color: black;
+    -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+    -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+    box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+  }
+}
+
+.page-title h3{
+  font-family: Ubuntu;
+  color: #3b5998;
+  text-align: center;
+  margin-top: 60px;
+  font-weight: bold;
+  font-size: 4em;
+  position: relative;
+}
+
+body {
+    background: url('');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #f7f7f7;
+    height: 820px;
+    width: 1500px;
+    margin: -10px 0 0 -10px;
+    font-family: $font;
+    font-weight: 400;
+    font-size: 15px;
+    color: #1d3c41;
+    overflow: hidden;
+}
+
+.link {
+  margin: 10px 10px 10px 40px;
+}
+
+.buttons {
+  margin-top: 5px;
+}
+
+.checkmark, .tasks {
+  color: black;
+}
+
+.sidebar {
+  float: right;
+  background-color: transparent;
+  border: 1px solid green;
+  border-radius: 5px;
+  height: 622px;
+  width: 170px;
+  margin-right: 60px;
+  margin-top: 160px;
+  margin-left: 1px;
+}
+
+.next, .prev, .add {
+  font-size: 7em;
+  margin-top: 100px;
+  margin-left: 25px;
+  color: #000;
+  &:focus, &:visited, *:hover {
+    outline: none;
+    text-decoration: none;
+    color: gray;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
