@@ -1,7 +1,7 @@
 $font: Ubuntu;
 
 body {
-    background:url(http://www.businessnewsdaily.com/images/i/000/007/874/original/free-business-plan-templates.jpg);
+    background:url(https://my.leadpages.net/template/5973203185827840/raw/img/header-bg.jpg?aid=);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,13 +46,13 @@ a{
 }
 
 #wrapper a{
-    color: rgb(95, 155, 198);
+    color: #403030;
     text-decoration: underline;
 }
 
 #wrapper h1{
     font-size: 48px;
-    color: rgb(6, 106, 117);
+    color: #403030;
     padding: 2px 0 10px 0;
     font-family: $font;
     font-weight: bold;
@@ -61,12 +61,7 @@ a{
 }
 
 #wrapper h1{
-    background: repeating-linear-gradient(-45deg,
-    rgb(18, 83, 93) ,
-    rgb(18, 83, 93) 20px,
-    rgb(64, 111, 118) 20px,
-    rgb(64, 111, 118) 40px,
-    rgb(18, 83, 93) 40px);
+    background: #403030;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
@@ -77,7 +72,8 @@ a{
     width: 100%;
     height: 2px;
     margin-top: 10px;
-    background: linear-gradient(to left, rgba(147,184,189,0) 0%,rgba(147,184,189,0.8) 20%,rgba(147,184,189,1) 53%,rgba(147,184,189,0.8) 79%,rgba(147,184,189,0) 100%);
+    // background: linear-gradient(to left, rgba(147,184,189,0) 0%,rgba(147,184,189,0.8) 20%,rgba(147,184,189,1) 53%,rgba(147,184,189,0.8) 79%,rgba(147,184,189,0) 100%);
+    background: black;
 }
 
 #wrapper p{
@@ -115,20 +111,25 @@ input {
     box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
 }
 
-.login_button:hover {
-    color: rgb(57, 191, 215);
-    background: rgb(247, 247, 247);
-    border: 1px solid rgb(74, 179, 198);
-}
-
-.login_button:active{
-    position: relative;
-    top: 1px;
+.login_button {
+  margin-bottom: 3px;
+  border-radius: 3px;
+  background: #403030;
+  border: none;
+  &:hover, &:active, &:focus, &:visited {
+      color: #403030;
+      background: rgb(247, 247, 247);
+      border: 1px solid #403030;
+      position: relative;
+      top: 1px;
+      outline: none;
+      text-decoration: none;
+  }
 }
 
 .register{
     position: absolute;
-    color: rgb(127, 124, 124);
+    color: #403030;
     left: 0px;
     height: 20px;
     width: 438px;
@@ -137,14 +138,6 @@ input {
     text-align: right;
     border-top: 1px solid rgb(219, 229, 232);
     border-radius: 0 0  5px 5px;
-    background: rgb(225, 234, 235);
-    background: repeating-linear-gradient(-45deg,
-    rgb(247, 247, 247) ,
-    rgb(247, 247, 247) 15px,
-    rgb(225, 234, 235) 15px,
-    rgb(225, 234, 235) 30px,
-    rgb(247, 247, 247) 30px
-    );
 }
 
 #wrapper .register a {
@@ -152,7 +145,7 @@ input {
     font-weight: bold;
     background: rgb(247, 248, 241);
     padding: 2px 6px;
-    color: rgb(29, 162, 193);
+    color: #403030;
     margin-left: 10px;
     text-decoration: none;
     border-radius: 4px;
@@ -161,9 +154,9 @@ input {
 }
 
 #wrapper .register a:hover {
-    color: rgb(57, 191, 215);
+    opacity: 0.7;
     background: rgb(247, 247, 247);
-    border: 1px solid rgb(74, 179, 198);
+    border: 1px solid #403030;
 }
 
 #wrapper .register a:active{
@@ -176,10 +169,10 @@ input {
     top: 0;
     width: 88%;
     padding: 18px 6% 60px 6%;
-    margin:100px 35px;
+    margin: 100px 35px;
     background: rgb(247, 247, 247);
-    border: 1px solid rgba(147, 184, 189,0.8);
-    box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    border: 1px solid #403030;
+    // box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
     border-radius: 5px;
 }
 
