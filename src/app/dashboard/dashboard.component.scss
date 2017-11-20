@@ -1,8 +1,12 @@
 $font: Ubuntu;
 
+.navbar {
+  background: #403030;
+}
+
 .search {
   float: right;
-  margin-right: 90px;
+  margin-right: -60px;
   margin-top: 7px;
 }
 
@@ -26,10 +30,7 @@ input[type="search"] {
   margin-right: 10px;
   padding: 5px;
   width: 23px;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  -webkit-transition: all .9s;
-  -moz-transition: all .9s;
   transition: all .9s;
   &:hover {
     background-color: #98acd7;
@@ -40,17 +41,16 @@ input[type="search"] {
     color: black;
     background-color: #f7f7f7;
     border-color: black;
-    -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-    -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
     box-shadow: 0 0 5px rgba(109, 207, 246, .5);
   }
 }
 
 .page-title h3{
   font-family: Ubuntu;
-  color: #3b5998;
+  // color: #3b5998;
+  color: black;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 80px;
   font-weight: bold;
   font-size: 4em;
   position: relative;
@@ -73,7 +73,7 @@ body {
 }
 
 .link {
-  margin: 10px 10px 10px 40px;
+  margin: 10px 10px 0px 40px;
 }
 
 .buttons {
@@ -87,18 +87,18 @@ body {
 .sidebar {
   float: right;
   background-color: transparent;
-  border: 1px solid green;
+  border: 1px solid brown;
   border-radius: 5px;
-  height: 622px;
+  height: 592px;
   width: 170px;
   margin-right: 60px;
-  margin-top: 160px;
+  margin-top: 168px;
   margin-left: 1px;
 }
 
 .next, .prev, .add {
   font-size: 7em;
-  margin-top: 100px;
+  margin-top: 40px;
   margin-left: 25px;
   color: #000;
   &:focus, &:visited, *:hover {
