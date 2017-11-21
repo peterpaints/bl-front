@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers, RequestOptions} from '@angular/http';
 import { User } from '../models/user';
 import { Bucket } from '../models/buckets';
 import { Item } from '../models/item';
@@ -16,50 +16,53 @@ export class ApiService {
 
   headers: any;
 
-  constructor(private http: Http) {
-    this.headers = new Headers();
-    this.headers.append('content-type', 'application/json');
-  }
+  constructor(private http: Http) {}
 
   public registerUser(email, password) {
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
     return this.http
     .post(api_url + '/auth/register',
     JSON.stringify({'email': email, 'password': password}),
-    {'headers': this.headers})
+    options)
     .map(response => {
-      return response;
+      return response.json();
     })
     .catch(this.handleError);
   }
 
   public logUserIn(email, password) {
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
     return this.http
     .post(api_url + '/auth/login',
     JSON.stringify({'email': email, 'password': password}),
-    {'headers': this.headers})
+    options)
     .map(response => {
-      return response;
+      return response.json();
     })
     .catch(this.handleError);
   }
 
   public getAllBuckets(page, per_page, search): Observable<Bucket[]> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
-    return this.http.get(api_url + '/bucketlists/?page=' + page + '&per_page=' + per_page + '&q=' + search,
-    {'headers': this.headers})
-    .map(response => {
-      const buckets = response.json();
-      return buckets.map((bucket) => new Bucket(bucket));
-    })
-    .catch(this.handleError);
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(
+      api_url + '/bucketlists/?page=' + page + '&per_page=' + per_page + '&q=' + search, options)
+      .map(response => {
+        const buckets = response.json();
+        return buckets.map((bucket) => new Bucket(bucket));
+      })
+      .catch(this.handleError);
   }
 
-  public createBucket(name: string): Observable<Bucket> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
-    return this.http.post(api_url + '/bucketlists/', JSON.stringify({'name': name}),
-    {'headers': this.headers})
+  public createBucket(bucket: Bucket): Observable<Bucket> {
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(api_url + '/bucketlists/', JSON.stringify({'name': bucket.name}),
+    options)
     .map(response => {
       return new Bucket(response.json());
     })
@@ -67,10 +70,11 @@ export class ApiService {
   }
 
   public getBucketById(id: number): Observable<Bucket> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
     return this.http.get(api_url + '/bucketlists/' + id,
-    {'headers': this.headers})
+    options)
     .map(response => {
       return new Bucket(response.json());
     })
@@ -78,30 +82,33 @@ export class ApiService {
   }
 
   public updateBucket(id: number, name: string): Observable<Bucket> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
     return this.http.put(api_url + '/bucketlists/' + id, JSON.stringify({'name': name}),
-    {'headers': this.headers})
+    options)
     .map(response => {
       return new Bucket(response.json());
     })
     .catch(this.handleError);
   }
 
-  public deleteBucket(id: number): Observable<null> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
-    return this.http.delete(api_url + '/bucketlists/' + id,
-    {'headers': this.headers})
+  public deleteBucket(bucket: Bucket): Observable<null> {
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(api_url + '/bucketlists/' + bucket.id,
+    options)
     .map(response => null)
     .catch(this.handleError);
   }
 
   public getItems(bucket_id: number): Observable<Item> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
     return this.http.get(api_url + '/bucketlists/' + bucket_id + 'items/',
-    {'headers': this.headers})
+    options)
     .map(response => {
       const items = response.json();
       return items.map((item) => new Item(item));
@@ -110,10 +117,11 @@ export class ApiService {
   }
 
   public createItem(bucket_id: number, name: string): Observable<Item> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(api_url + '/bucketlists/' + bucket_id + 'items/',
-    JSON.stringify({'name': name}), {'headers': this.headers})
+    JSON.stringify({'name': name}), options)
     .map(response => {
       return new Item(response.json());
     })
@@ -121,10 +129,11 @@ export class ApiService {
   }
 
   public updateItem(bucket_id: number, item_id: number, name: string): Observable<Item> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
     return this.http.put(api_url + '/bucketlists/' + bucket_id + 'items/' + item_id,
-    JSON.stringify({'name': name}), {'headers': this.headers})
+    JSON.stringify({'name': name}), options)
     .map(response => {
       return new Item(response.json());
     })
@@ -132,9 +141,14 @@ export class ApiService {
   }
 
   public deleteItem(bucket_id: number, item_id: number, name: string): Observable<Item> {
-    const token = localStorage.getItem('access_token');
-    this.headers.append('Authorization', token);
-    return this.headers.delete(api_url + '/bucketlists/' + bucket_id + 'items/' + item_id)
+    let token = localStorage.getItem('access_token');
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(api_url + '/bucketlists/' + bucket_id + 'items/' + item_id, options)
+    .map(response => {
+      return new Item(response.json());
+    })
+    .catch(this.handleError);
   }
 
   private handleError(error: Response | any) {
