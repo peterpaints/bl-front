@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   confirm_password: string ='';
   access_token: string = '';
   login_status: boolean;
+  current_user: string;
+  res;
 
   constructor(private api: ApiService, private router: Router) { }
 
@@ -26,10 +28,11 @@ export class LoginComponent implements OnInit {
     this.api
       .logUserIn(email, password)
       .subscribe(response => {
-        const res = response;
-        if (res.json()['message'] === 'You logged in successfully.') {
-          if ((res.json()['access_token'])) {
-            this.access_token = res.json()['access_token'];
+        this.res = response;
+        if (this.res.message === 'You logged in successfully.') {
+          if (this.res.access_token) {
+            // console.log(this.res.access_token);
+            this.access_token = this.res.access_token;
             localStorage.setItem('access_token', this.access_token);
             localStorage.setItem('login_status', JSON.stringify(this.login_status = true));
             localStorage.setItem('current_user', email);
