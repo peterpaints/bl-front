@@ -43,6 +43,72 @@
       </div>
     </div>
   </div>
+  <div class="modal fade solvemodal" *ngFor="let bucketlist of bucketlists" attr.id="editModal{{bucketlist.id}}" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bucketheader" attr.id="header{{bucketlist.id}}" (click)="showEditForm()">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" attr.id="bucketname{{bucketlist.id}}">{{bucketlist.name}}</h4>
+          <form (ngSubmit)="editBucket()" class="bucketeditform hidden" attr.id="form{{bucketlist.id}}">
+            <input type="text" name="editbucket" [(ngModel)]="bucketlist.name">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i></button>
+          </form>
+        </div>
+        <div class="items">
+          <form class="hidden">
+            <input type="text" name="whatdoesthisdo" class="hidden">
+            <div class="input-group input-group-option">
+              <input type="text" name="item" class="form-control">
+                <span class="input-group-btn itembuttons">
+                    <button class="btn btn-primary itemedit" type="button"><span class="fa fa-pencil"></span></button>
+                    <button class="btn btn-default itemremove" type="button"><span class="fa fa-trash"></span></button>
+                </span>
+            </div>
+          </form>
+              <ul class="list-group itemslist">
+                <li class="list-group-item">
+                  <span class="itemname">First item</span>
+                  <ul class="list-group-submenu">
+                    <li class="list-group-submenu-item">
+                      <input class="toggle" type="checkbox" checked="false">
+                      <button class="btn btn-primary" type="button" id="bla"><span class="fa fa-remove"></span></button>
+                    </li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <span class="itemname">First item</span>
+                  <ul class="list-group-submenu">
+                    <li class="list-group-submenu-item">
+                      <input class="toggle" type="checkbox" checked="false">
+                      <button class="btn btn-primary" type="button"><span class="fa fa-remove"></span></button>
+                    </li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <span class="itemname">First item</span>
+                  <ul class="list-group-submenu">
+                    <li class="list-group-submenu-item">
+                      <input class="toggle" type="checkbox" checked="false">
+                      <button class="btn btn-primary" type="button"><span class="fa fa-remove"></span></button>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="input-group input-group-options newitem">
+                <input type="text" name="newitem" class="form-control" placeholder="New Item">
+                <span class="input-group-btn hidden">
+                  <button class="btn btn-primary itemedit" type="button"><span class="fa fa-pencil"></span></button>
+                  <button class="btn btn-default itemremove" type="button"><span class="fa fa-trash"></span></button>
+                </span>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="pusher">
     <div class="page-title">
       <h3>Bucketlists</h3>
@@ -53,35 +119,8 @@
     <div class="ui brown link cards" *ngIf="bucketlists.length > 0">
       <div class="card" *ngFor="let bucketlist of bucketlists">
         <div class="content">
-          <div class="header"><h3>{{bucketlist.name}}</h3></div>
-        </div>
-        <div class="modal fade solvemodal" attr.id="editModal{{bucketlist.id}}" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">{{bucketlist.name}}</h4>
-              </div>
-              <div class="modal-content">
-                <div id="custom-search-input">
-                  <div class="input-group col-md-12">
-                    <input id="search" type="text" class="form-control input-lg" placeholder="Search" />
-                    <span class="input-group-btn">
-                      <button class="btn btn-info btn-lg" type="button">
-                        <i class="fa fa-search"></i>
-                      </button>
-                    </span>
-                  </div>
-                  <ul class="list-group">
-                    <li class="list-group-item">This</li>
-                    <li class="list-group-item">That</li>
-                    <li class="list-group-item">This and that</li>
-                    <li class="list-group-item">This and that other</li>
-                    <li class="list-group-item">This and that other over there</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <div class="header">
+            <h3 class="buckettitle">{{bucketlist.name}}</h3>
           </div>
         </div>
         <div class="extra content">
@@ -94,7 +133,7 @@
             4 complete
           </span>
           <div class="ui two buttons">
-            <div class="massive basic ui grey button" data-toggle="modal" attr.data-target="#editModal{{bucketlist.id}}" (click)="showModal()"><i class="edit icon"></i>Edit</div>
+            <div class="massive basic ui grey button" data-toggle="modal" attr.data-target="#editModal{{bucketlist.id}}"><i class="edit icon"></i>Edit</div>
             <div class="massive basic ui brown button" (click)="deleteBucket(bucketlist)"><i class="delete icon"></i>Delete</div>
           </div>
         </div>
