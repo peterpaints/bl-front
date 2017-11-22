@@ -1,10 +1,8 @@
 export class Bucket {
     id: number;
-    name: string;
-    date_created: string;
-    date_modified: string;
-    bucket_id: number;
-    done: boolean=false;
+    name: string = '';
+    items: object[] = [];
+    created_by: number;
 
     constructor (values: Object = {}) {
         Object.assign(this, values);
