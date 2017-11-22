@@ -51,6 +51,13 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  editBucket(bucket: Bucket) {
+    this.api.updateBucket(bucket)
+    .subscribe(response => {
+      this.bucketlists = this.bucketlists;
+    });
+  }
+
   deleteBucket(bucket: Bucket) {
     this.api.deleteBucket(bucket)
     .subscribe(response => {
