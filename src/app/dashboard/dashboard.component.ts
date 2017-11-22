@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   per_page: number = 12;
   search: string = '';
   temp: number;
+  eyed: string;
 
   constructor(private api: ApiService, private router: Router) { }
 
@@ -36,8 +37,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  showModal(){
-    $('.solvemodal').prependTo("body");
+  showEditForm() {
+    this.eyed = event.srcElement.id;
+    let lasttwo = this.eyed.substr(-2);
+    $('#bucketname' + lasttwo).toggleClass('hidden');
+    $('#form' + lasttwo).toggleClass('hidden');
   }
 
   addBucket(bucket: Bucket) {
