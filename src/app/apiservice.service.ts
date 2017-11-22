@@ -81,11 +81,11 @@ export class ApiService {
     .catch(this.handleError);
   }
 
-  public updateBucket(id: number, name: string): Observable<Bucket> {
+  public updateBucket(bucket: Bucket): Observable<Bucket> {
     let token = localStorage.getItem('access_token');
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(api_url + '/bucketlists/' + id, JSON.stringify({'name': name}),
+    return this.http.put(api_url + '/bucketlists/' + bucket.id, JSON.stringify({'name': bucket.name}),
     options)
     .map(response => {
       return new Bucket(response.json());
