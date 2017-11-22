@@ -162,3 +162,32 @@ body {
     opacity: 0.5;
   }
 }
+
+.list-group {
+  overflow: hidden;
+  margin: 3px 0px 0px 20px;
+  width: 560px;
+  border: transparent;
+}
+
+.list-group-submenu {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  white-space: nowrap;
+	list-style: none;
+	padding-left: 0px;
+}
+
+.list-group-submenu .list-group-submenu-item {
+	float: right;
+	white-space: nowrap;
+	display: block;
+	padding: 0;
+	margin-bottom: -1px;
+}
+
+.newitem {
+  margin: 10px 0 10px 20px;
+  width: 560px;
+}
