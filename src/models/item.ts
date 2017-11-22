@@ -4,7 +4,7 @@ export class Item {
     date_created: string;
     date_modified: string;
     bucket_id: number;
-    done: boolean=false;
+    done: boolean = false;
 
     constructor (values: Object = {}) {
         Object.assign(this, values);
