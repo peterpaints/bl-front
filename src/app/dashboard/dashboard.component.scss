@@ -204,6 +204,15 @@ body {
 	margin-bottom: -1px;
 }
 
+.items {
+  height: 300px;
+  overflow: scroll;
+}
+
+.itemslist {
+  margin-bottom: 10px;
+}
+
 .newitem {
   margin: 10px 0 10px 20px;
   width: 532px;
