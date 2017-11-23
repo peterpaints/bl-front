@@ -141,14 +141,12 @@ export class ApiService {
     .catch(this.handleError);
   }
 
-  public deleteItem(bucket_id: number, item_id: number, name: string): Observable<Item> {
+  public deleteItem(item: Item, bucket: Bucket): Observable<Item> {
     let token = localStorage.getItem('access_token');
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
     let options = new RequestOptions({ headers: headers });
-    return this.http.delete(api_url + '/bucketlists/' + bucket_id + '/items/' + item_id, options)
-    .map(response => {
-      return new Item(response.json());
-    })
+    return this.http.delete(api_url + '/bucketlists/' + bucket.id + '/items/' + item.id, options)
+    .map(response => null)
     .catch(this.handleError);
   }
 
