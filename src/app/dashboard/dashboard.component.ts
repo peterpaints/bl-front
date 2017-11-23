@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Bucket } from '../../models/buckets';
+import { Item } from '../../models/item';
 import { ApiService } from '../apiservice.service';
 import { Router } from '@angular/router';
 declare var $: any;
@@ -11,7 +12,9 @@ declare var $: any;
 export class DashboardComponent implements OnInit {
 
   newBucket: Bucket = new Bucket();
+  newItem: Item = new Item();
   bucketlists: Bucket[] = [];
+  items: {} = {};
   current_user: string = '';
   access_token: string = '';
   login_status: boolean;
@@ -27,13 +30,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('login_status')) === false) {
-      this.login_status = false;
       this.router.navigate(['/login']);
     } else {
       this.current_user = localStorage.getItem('current_user');
       this.api.getAllBuckets(this.current_page.toString(), this.per_page.toString(), this.search)
       .subscribe(response => {
         this.bucketlists = response;
+        this.bucketlists.forEach(bucket => this.allItems(bucket));
       });
     }
 
@@ -106,6 +109,20 @@ export class DashboardComponent implements OnInit {
     this.api.getAllBuckets(this.current_page.toString(), this.per_page.toString(), search)
     .subscribe(response => {
       this.bucketlists = response;
+    });
+  }
+
+  allItems(bucket: Bucket) {
+    this.api.getItems(bucket)
+    .subscribe(response => {
+      this.items[bucket.id] = response;
+    });
+  }
+
+  addItem(newItem: Item, bucket: Bucket) {
+    this.api.createItem(this.newItem, bucket)
+    .subscribe(response => {
+      this.items[bucket.id] = this.items[bucket.id].concat(response);
     });
   }
 }
