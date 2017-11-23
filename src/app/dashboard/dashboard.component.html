@@ -62,8 +62,11 @@
             <input type="text" name="newitem"  [(ngModel)]="newItem.name" class="form-control" placeholder="New Item">
           </form>
           <ul class="list-group itemslist">
-            <li class="list-group-item" *ngFor="let item of items[bucketlist.id]">
-              <span class="itemname">{{item.name}}</span>
+            <li class="list-group-item" *ngFor="let item of items[bucketlist.id]" (click)="showItemEditForm()">
+              <p class="itemname" attr.id="itemname{{item.id}}">{{item.name}}</p>
+              <form (ngSubmit)="editItem(item, bucketlist)" class="itemeditform hidden" attr.id="itemform{{item.id}}">
+                <input type="text" name="edititem" [(ngModel)]="item.name">
+              </form>
               <ul class="list-group-submenu">
                 <li class="list-group-submenu-item">
                   <input class="toggle" type="checkbox" [checked]="item.done" (change)="item.done = !item.done; toggleDone(item, bucketlist)">
