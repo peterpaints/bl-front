@@ -8,7 +8,7 @@
         <input id="search" type="search" data-provide="typeahead" autocomplete="off" [(ngModel)]="search" (keyup)="searchBuckets(search)"/>
       </div>
       <div class="social-icon">
-        <a href="#" class="fa fa-user-circle" (click)="logOut()"></a>
+        <a href="#" class="fa fa-user-circle" data-toggle="tooltip" data-placement="bottom" title="Log Out" (click)="logOut()"></a>
         <p>{{current_user}}</p>
       </div>
     </div>
