@@ -23,7 +23,7 @@ $font: Ubuntu;
 
 .search {
   float: right;
-  margin-right: -20px;
+  margin-right: 40px;
   margin-top: 7px;
 }
 
@@ -111,7 +111,7 @@ body {
     font-weight: 400;
     font-size: 15px;
     color: #1d3c41;
-    overflow: hidden;
+    overflow: scroll;
     z-index: -999;
 }
 
