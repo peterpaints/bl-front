@@ -103,25 +103,26 @@ export class ApiService {
     .catch(this.handleError);
   }
 
-  public getItems(bucket_id: number): Observable<Item> {
+  public getItems(bucket: Bucket): Observable<Item> {
     let token = localStorage.getItem('access_token');
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(api_url + '/bucketlists/' + bucket_id + 'items/',
+    return this.http.get(api_url + '/bucketlists/' + bucket.id,
     options)
     .map(response => {
-      const items = response.json();
+      const as_json = response.json();
+      const items = as_json.items;
       return items.map((item) => new Item(item));
     })
     .catch(this.handleError);
   }
 
-  public createItem(bucket_id: number, name: string): Observable<Item> {
+  public createItem(item: Item, bucket: Bucket): Observable<Item> {
     let token = localStorage.getItem('access_token');
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(api_url + '/bucketlists/' + bucket_id + 'items/',
-    JSON.stringify({'name': name}), options)
+    return this.http.post(api_url + '/bucketlists/' + bucket.id + '/items',
+    JSON.stringify({'name': item.name}), options)
     .map(response => {
       return new Item(response.json());
     })
@@ -132,7 +133,7 @@ export class ApiService {
     let token = localStorage.getItem('access_token');
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(api_url + '/bucketlists/' + bucket_id + 'items/' + item_id,
+    return this.http.put(api_url + '/bucketlists/' + bucket_id + '/items' + item_id,
     JSON.stringify({'name': name}), options)
     .map(response => {
       return new Item(response.json());
@@ -144,7 +145,7 @@ export class ApiService {
     let token = localStorage.getItem('access_token');
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': token});
     let options = new RequestOptions({ headers: headers });
-    return this.http.delete(api_url + '/bucketlists/' + bucket_id + 'items/' + item_id, options)
+    return this.http.delete(api_url + '/bucketlists/' + bucket_id + '/items' + item_id, options)
     .map(response => {
       return new Item(response.json());
     })
