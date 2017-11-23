@@ -45,6 +45,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  doneItems(bucket) {
+    const done = bucket.items.filter(item => item.done === true);
+    return done.length;
+  }
+
   logOut() {
     localStorage.setItem('access_token', null);
     localStorage.setItem('login_status', JSON.stringify(this.login_status = false));
