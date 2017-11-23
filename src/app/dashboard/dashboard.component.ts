@@ -64,6 +64,13 @@ export class DashboardComponent implements OnInit {
     $('#form' + lasttwo).toggleClass('hidden');
   }
 
+  showItemEditForm() {
+    this.eyed = event.srcElement.id;
+    let lasttwo = this.eyed.substr(-2);
+    $('#itemname' + lasttwo).toggleClass('hidden');
+    $('#itemform' + lasttwo).toggleClass('hidden');
+  }
+
   addBucket(bucket: Bucket) {
     this.api.createBucket(this.newBucket)
     .subscribe(response => {
@@ -128,6 +135,13 @@ export class DashboardComponent implements OnInit {
     this.api.createItem(this.newItem, bucket)
     .subscribe(response => {
       this.items[bucket.id] = this.items[bucket.id].concat(response);
+    });
+  }
+
+  editItem(item: Item, bucket: Bucket) {
+    this.api.updateItem(item, bucket)
+    .subscribe(response => {
+      this.items = this.items;
     });
   }
 
