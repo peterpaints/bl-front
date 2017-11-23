@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('login_status')) === false) {
+      this.login_status = false;
       this.router.navigate(['/login']);
     } else {
       this.current_user = localStorage.getItem('current_user');
@@ -35,6 +36,13 @@ export class DashboardComponent implements OnInit {
         this.bucketlists = response;
       });
     }
+  }
+
+  logOut() {
+    localStorage.setItem('access_token', null);
+    localStorage.setItem('login_status', JSON.stringify(this.login_status = false));
+    localStorage.setItem('current_user', null);
+    this.router.navigate(['/login']);
   }
 
   showEditForm() {
