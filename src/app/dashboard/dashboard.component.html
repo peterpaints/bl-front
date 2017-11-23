@@ -55,16 +55,6 @@
           </form>
         </div>
         <div class="items">
-          <form class="hidden">
-            <input type="text" name="whatdoesthisdo" class="hidden">
-            <div class="input-group input-group-option">
-              <input type="text" name="item" class="form-control">
-              <span class="input-group-btn itembuttons">
-                <button class="btn btn-primary itemedit" type="button"><span class="fa fa-pencil"></span></button>
-                <button class="btn btn-default itemremove" type="button"><span class="fa fa-trash"></span></button>
-              </span>
-            </div>
-          </form>
           <div *ngIf="bucketlist.items.length === 0">
             <p style="text-align: center; margin-top: 10px;">You have no bucketlist items ...</p>
           </div>
@@ -76,8 +66,8 @@
               <span class="itemname">{{item.name}}</span>
               <ul class="list-group-submenu">
                 <li class="list-group-submenu-item">
-                  <input class="toggle" type="checkbox" checked="false">
-                  <button class="btn btn-primary" type="button" id="bla"><span class="fa fa-remove"></span></button>
+                  <input class="toggle" type="checkbox" [checked]="item.done" (change)="item.done = !item.done; toggleDone(item, bucketlist)">
+                  <i class="fa fa-trash"></i>
                 </li>
               </ul>
             </li>
