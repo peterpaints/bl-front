@@ -8,8 +8,8 @@
         <input id="search" type="search" data-provide="typeahead" autocomplete="off" [(ngModel)]="search" (keyup)="searchBuckets(search)"/>
       </div>
       <div class="social-icon">
-        <a target="_blank" href="#" class="fa fa-user-plus"></a>
-        <a target="_blank" href="#" class="fa fa-unlock"></a>
+        <a href="#" class="fa fa-user-circle" (click)="logOut()"></a>
+        <p>{{current_user}}</p>
       </div>
     </div>
   </div>
