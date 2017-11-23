@@ -4,9 +4,26 @@ $font: Ubuntu;
   background: #403030;
 }
 
+.fa-user-circle {
+  position: absolute;
+  top: 7px;
+  right: 60px;
+  font-size: 1.6em;
+  color: #fff;
+}
+
+.social-icon {
+  p {
+    color: #fff;
+    position: absolute;
+    top: 30px;
+    right: 5px;
+  }
+}
+
 .search {
   float: right;
-  margin-right: -60px;
+  margin-right: -20px;
   margin-top: 7px;
 }
 
