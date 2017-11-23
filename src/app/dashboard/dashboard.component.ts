@@ -125,4 +125,11 @@ export class DashboardComponent implements OnInit {
       this.items[bucket.id] = this.items[bucket.id].concat(response);
     });
   }
+
+  toggleDone(item: Item, bucket: Bucket) {
+    this.api.updateItem(item, bucket)
+    .subscribe(response => {
+      this.items = this.items;
+    });
+  }
 }
