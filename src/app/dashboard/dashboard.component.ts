@@ -36,6 +36,10 @@ export class DashboardComponent implements OnInit {
         this.bucketlists = response;
       });
     }
+
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   }
 
   logOut() {
