@@ -132,4 +132,11 @@ export class DashboardComponent implements OnInit {
       this.items = this.items;
     });
   }
+
+  removeItem(item: Item, bucket: Bucket) {
+    this.api.deleteItem(item, bucket)
+    .subscribe(response => {
+      this.items[bucket.id] = this.items[bucket.id].filter((i) => i.id !== item.id);
+    });
+  }
 }
