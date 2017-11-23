@@ -59,48 +59,29 @@
             <input type="text" name="whatdoesthisdo" class="hidden">
             <div class="input-group input-group-option">
               <input type="text" name="item" class="form-control">
-                <span class="input-group-btn itembuttons">
-                    <button class="btn btn-primary itemedit" type="button"><span class="fa fa-pencil"></span></button>
-                    <button class="btn btn-default itemremove" type="button"><span class="fa fa-trash"></span></button>
-                </span>
+              <span class="input-group-btn itembuttons">
+                <button class="btn btn-primary itemedit" type="button"><span class="fa fa-pencil"></span></button>
+                <button class="btn btn-default itemremove" type="button"><span class="fa fa-trash"></span></button>
+              </span>
             </div>
           </form>
-              <ul class="list-group itemslist">
-                <li class="list-group-item">
-                  <span class="itemname">First item</span>
-                  <ul class="list-group-submenu">
-                    <li class="list-group-submenu-item">
-                      <input class="toggle" type="checkbox" checked="false">
-                      <button class="btn btn-primary" type="button" id="bla"><span class="fa fa-remove"></span></button>
-                    </li>
-                  </ul>
-                </li>
-                <li class="list-group-item">
-                  <span class="itemname">First item</span>
-                  <ul class="list-group-submenu">
-                    <li class="list-group-submenu-item">
-                      <input class="toggle" type="checkbox" checked="false">
-                      <button class="btn btn-primary" type="button"><span class="fa fa-remove"></span></button>
-                    </li>
-                  </ul>
-                </li>
-                <li class="list-group-item">
-                  <span class="itemname">First item</span>
-                  <ul class="list-group-submenu">
-                    <li class="list-group-submenu-item">
-                      <input class="toggle" type="checkbox" checked="false">
-                      <button class="btn btn-primary" type="button"><span class="fa fa-remove"></span></button>
-                    </li>
-                  </ul>
+          <div *ngIf="bucketlist.items.length === 0">
+            <p style="text-align: center; margin-top: 10px;">You have no bucketlist items ...</p>
+          </div>
+          <form (ngSubmit)="addItem(newItem, bucketlist)" class="input-group input-group-options newitem">
+            <input type="text" name="newitem"  [(ngModel)]="newItem.name" class="form-control" placeholder="New Item">
+          </form>
+          <ul class="list-group itemslist">
+            <li class="list-group-item" *ngFor="let item of items[bucketlist.id]">
+              <span class="itemname">{{item.name}}</span>
+              <ul class="list-group-submenu">
+                <li class="list-group-submenu-item">
+                  <input class="toggle" type="checkbox" checked="false">
+                  <button class="btn btn-primary" type="button" id="bla"><span class="fa fa-remove"></span></button>
                 </li>
               </ul>
-              <div class="input-group input-group-options newitem">
-                <input type="text" name="newitem" class="form-control" placeholder="New Item">
-                <span class="input-group-btn hidden">
-                  <button class="btn btn-primary itemedit" type="button"><span class="fa fa-pencil"></span></button>
-                  <button class="btn btn-default itemremove" type="button"><span class="fa fa-trash"></span></button>
-                </span>
-              </div>
+            </li>
+          </ul>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
