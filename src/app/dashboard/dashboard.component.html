@@ -67,7 +67,7 @@
               <ul class="list-group-submenu">
                 <li class="list-group-submenu-item">
                   <input class="toggle" type="checkbox" [checked]="item.done" (change)="item.done = !item.done; toggleDone(item, bucketlist)">
-                  <i class="fa fa-trash"></i>
+                  <i class="fa fa-trash" (click)="removeItem(item, bucketlist)"></i>
                 </li>
               </ul>
             </li>
