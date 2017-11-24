@@ -57,15 +57,15 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  showEditForm() {
-    this.eyed = event.srcElement.id;
+  showEditForm(event) {
+    this.eyed = event.target.id;
     let lasttwo = this.eyed.substr(-2);
     $('#bucketname' + lasttwo).toggleClass('hidden');
     $('#form' + lasttwo).toggleClass('hidden');
   }
 
-  showItemEditForm() {
-    this.eyed = event.srcElement.id;
+  showItemEditForm(event) {
+    this.eyed = event.target.id;
     let lasttwo = this.eyed.substr(-2);
     $('#itemname' + lasttwo).toggleClass('hidden');
     $('#itemform' + lasttwo).toggleClass('hidden');

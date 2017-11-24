@@ -46,7 +46,7 @@
   <div class="modal fade solvemodal" *ngFor="let bucketlist of bucketlists" attr.id="editModal{{bucketlist.id}}" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header bucketheader" attr.id="header{{bucketlist.id}}" (click)="showEditForm()">
+        <div class="modal-header bucketheader" attr.id="header{{bucketlist.id}}" (click)="showEditForm($event)">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" attr.id="bucketname{{bucketlist.id}}">{{bucketlist.name}}</h4>
           <form (ngSubmit)="editBucket(bucketlist)" class="bucketeditform hidden" attr.id="form{{bucketlist.id}}">
@@ -61,7 +61,7 @@
             <input type="text" name="newitem"  [(ngModel)]="newItem.name" class="form-control" placeholder="New Item">
           </form>
           <ul class="list-group itemslist">
-            <li class="list-group-item" *ngFor="let item of items[bucketlist.id]" (click)="showItemEditForm()">
+            <li class="list-group-item" *ngFor="let item of items[bucketlist.id]" (click)="showItemEditForm($event)">
               <p class="itemname" attr.id="itemname{{item.id}}">{{item.name}}</p>
               <form (ngSubmit)="editItem(item, bucketlist)" class="itemeditform hidden" attr.id="itemform{{item.id}}">
                 <input type="text" name="edititem" [(ngModel)]="item.name">
