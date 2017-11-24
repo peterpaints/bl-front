@@ -51,7 +51,6 @@
           <h4 class="modal-title" attr.id="bucketname{{bucketlist.id}}">{{bucketlist.name}}</h4>
           <form (ngSubmit)="editBucket(bucketlist)" class="bucketeditform hidden" attr.id="form{{bucketlist.id}}">
             <input type="text" name="editbucket" [(ngModel)]="bucketlist.name">
-            <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i></button>
           </form>
         </div>
         <div class="items">
@@ -71,6 +70,7 @@
                 <li class="list-group-submenu-item">
                   <input class="toggle" type="checkbox" [checked]="item.done" (change)="item.done = !item.done; toggleDone(item, bucketlist)">
                   <i class="fa fa-trash" (click)="removeItem(item, bucketlist)"></i>
+                  <i class="fa fa-pencil" (click)="showItemEditForm()"></i>
                 </li>
               </ul>
             </li>
