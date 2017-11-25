@@ -80,7 +80,7 @@ input[type="search"] {
 
 .page-title h3{
   font-family: Ubuntu;
-  color: black;
+  color: #403030;
   text-align: center;
   margin-top: 100px;
   font-weight: bold;
@@ -90,7 +90,7 @@ input[type="search"] {
 
 h5 {
   font-family: Ubuntu;
-  color: black;
+  color: #403030;
   text-align: center;
   margin-top: 100px;
   font-weight: bold;
@@ -127,10 +127,14 @@ body {
   color: black;
 }
 
+.buckettitle{
+  color: #403030;
+}
+
 .sidebar {
   float: right;
   background-color: transparent;
-  border: 1px solid brown;
+  border: 1px solid #403030;
   border-radius: 5px;
   height: 592px;
   width: 170px;
@@ -143,7 +147,7 @@ body {
   font-size: 7em;
   margin-top: 40px;
   margin-left: 25px;
-  color: #000;
+  color: #403030;
   &:focus, &:visited, *:hover {
     outline: none;
     text-decoration: none;
