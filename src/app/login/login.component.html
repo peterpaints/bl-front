@@ -1,0 +1,32 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Registration Form</title>
+</head>
+<body>
+  <div class="container">
+    <div id="container-inner" >
+      <div id="wrapper">
+        <div id="login">
+          <form autocomplete="on" (ngSubmit)="login(email, password)">
+            <h1>Log In</h1>
+            <p>
+              <label for="email">Email</label>
+              <input name="email" required="required" [(ngModel)]="email" type="email" placeholder="you@example.com"/>
+            </p>
+            <p>
+              <label for="password" class="password">Password</label>
+              <input name="password" required="required" [(ngModel)]="password" type="password" placeholder="Password" />
+            </p>
+            <button class="btn btn-primary login_button" type="submit">Let me in</button>
+            <p class="register">
+              Don't have an account?
+              <a href="/register" class="to_register">Register</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

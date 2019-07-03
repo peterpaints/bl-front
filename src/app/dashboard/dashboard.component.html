@@ -1,0 +1,117 @@
+<nav>
+  <div class="navbar navbar-inverse">
+    <div class="container">
+      <div class="title">
+        <p>liste de seau</p>
+      </div>
+      <div class="search">
+        <input id="search" type="search" data-provide="typeahead" autocomplete="off" [(ngModel)]="search" (keyup)="searchBuckets(search)"/>
+      </div>
+      <div class="social-icon">
+        <a href="#" class="fa fa-user-circle" data-toggle="tooltip" data-placement="bottom" title="Log Out" (click)="logOut()"></a>
+        <p>{{current_user}}</p>
+      </div>
+    </div>
+  </div>
+</nav>
+<body>
+  <div class="sidebar">
+    <div class="prev" (click)="prevPage()">
+      <i class="chevron circle left icon"></i>
+    </div>
+    <div class="next" (click)="nextPage()">
+      <i class="chevron circle right icon"></i>
+    </div>
+    <div class="add" data-toggle="modal" data-target="#basicModal">
+      <i class="write icon"></i>
+    </div>
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Add a Bucketlist</h4>
+          </div>
+          <form (ngSubmit)="addBucket()">
+            <input id="addbucket" type="text" name="add" [(ngModel)]="newBucket.name" placeholder="Win the Nobel Peace Prize" autofocus="">
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade solvemodal" *ngFor="let bucketlist of bucketlists" attr.id="editModal{{bucketlist.id}}" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bucketheader" attr.id="header{{bucketlist.id}}" (click)="showEditForm($event)">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" attr.id="bucketname{{bucketlist.id}}">{{bucketlist.name}}</h4>
+          <form (ngSubmit)="editBucket(bucketlist)" class="bucketeditform hidden" attr.id="form{{bucketlist.id}}">
+            <input type="text" name="editbucket" [(ngModel)]="bucketlist.name">
+          </form>
+        </div>
+        <div class="items">
+          <div *ngIf="bucketlist.items.length === 0">
+            <p style="text-align: center; margin-top: 10px;">You have no bucketlist items ...</p>
+          </div>
+          <form (ngSubmit)="addItem(newItem, bucketlist)" class="input-group input-group-options newitem">
+            <input type="text" name="newitem"  [(ngModel)]="newItem.name" class="form-control" placeholder="New Item">
+          </form>
+          <ul class="list-group itemslist">
+            <li class="list-group-item" *ngFor="let item of items[bucketlist.id]" (click)="showItemEditForm($event)">
+              <p class="itemname" attr.id="itemname{{item.id}}">{{item.name}}</p>
+              <form (ngSubmit)="editItem(item, bucketlist)" class="itemeditform hidden" attr.id="itemform{{item.id}}">
+                <input type="text" name="edititem" [(ngModel)]="item.name">
+              </form>
+              <ul class="list-group-submenu">
+                <li class="list-group-submenu-item">
+                  <input class="toggle" type="checkbox" [checked]="item.done" (change)="item.done = !item.done; toggleDone(item, bucketlist)">
+                  <i class="fa fa-trash" (click)="removeItem(item, bucketlist)"></i>
+                  <i class="fa fa-pencil" (click)="showItemEditForm()"></i>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pusher">
+    <div class="page-title">
+      <h3>Bucketlists</h3>
+    </div>
+    <div *ngIf="bucketlists.length === 0">
+      <h5>There are no bucketlists here ...</h5>
+    </div>
+    <div class="ui brown link cards" *ngIf="bucketlists.length > 0">
+      <div class="card" *ngFor="let bucketlist of bucketlists">
+        <div class="content">
+          <div class="header">
+            <h3 class="buckettitle">{{bucketlist.name}}</h3>
+          </div>
+        </div>
+        <div class="extra content">
+          <span class="right floated">
+            <i class="tasks icon"></i>
+            {{bucketlist.items.length}} items
+          </span>
+          <span>
+            <i class="checkmark box icon"></i>
+            {{doneItems(bucketlist)}} complete
+          </span>
+          <div class="ui two buttons">
+            <div class="massive basic ui grey button" data-toggle="modal" attr.data-target="#editModal{{bucketlist.id}}"><i class="edit icon"></i>Edit</div>
+            <div class="massive basic ui brown button" (click)="deleteBucket(bucketlist)"><i class="delete icon"></i>Delete</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

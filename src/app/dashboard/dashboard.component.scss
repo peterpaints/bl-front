@@ -1,0 +1,274 @@
+$font: Ubuntu;
+
+.navbar {
+  background: #403030;
+}
+
+.fa-user-circle {
+  position: absolute;
+  top: 7px;
+  right: 60px;
+  font-size: 1.6em;
+  color: #fff;
+}
+
+.social-icon {
+  p {
+    color: #fff;
+    position: absolute;
+    top: 30px;
+    right: 5px;
+  }
+}
+
+.search {
+  float: right;
+  margin-right: 40px;
+  margin-top: 7px;
+}
+
+input {
+  outline: none;
+}
+
+input[type="search"], .btn {
+  border: solid 1px #ccc;
+  -webkit-border-radius: 10em;
+  -moz-border-radius: 10em;
+  border-radius: 10em;
+}
+
+input[type="search"] {
+  background: #f7f7f7 url(http://www.endlessicons.com/wp-content/uploads/2015/08/search-icon-2.png) no-repeat -15px center;
+  background-size: 60px;
+  color: transparent;
+  font-family: $font;
+  font-size: 1em;
+  margin-right: 10px;
+  padding: 5px;
+  width: 23px;
+  box-sizing: content-box;
+  transition: all .9s;
+  &:hover {
+    background-color: #98acd7;
+  }
+  &:focus {
+    width: 200px;
+    padding-left: 30px;
+    color: black;
+    background-color: #f7f7f7;
+    border-color: black;
+    box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+  }
+}
+
+#addbucket {
+  position: relative;
+	margin: 0;
+	width: 100%;
+	font-size: 24px;
+	font-family: inherit;
+	font-weight: lighter;
+	line-height: 1.4em;
+	color: inherit;
+	box-sizing: border-box;
+  padding: 16px 16px 16px 16px;
+	border: none;
+	background: rgba(0, 0, 0, 0.003);
+	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+}
+
+.page-title h3{
+  font-family: Ubuntu;
+  color: #403030;
+  text-align: center;
+  margin-top: 100px;
+  font-weight: bold;
+  font-size: 4em;
+  position: relative;
+}
+
+h5 {
+  font-family: Ubuntu;
+  color: #403030;
+  text-align: center;
+  margin-top: 100px;
+  font-weight: bold;
+  font-size: 4em;
+  position: relative;
+}
+
+body {
+    background: url('');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #f7f7f7;
+    height: 820px;
+    width: 1500px;
+    margin: -10px 0 0 -10px;
+    font-family: $font;
+    font-weight: 400;
+    font-size: 15px;
+    color: #1d3c41;
+    overflow: scroll;
+    z-index: -999;
+}
+
+.link {
+  margin: 30px 10px 0px 40px;
+}
+
+.buttons {
+  margin-top: 5px;
+}
+
+.checkmark, .tasks {
+  color: black;
+}
+
+.buckettitle{
+  color: #403030;
+}
+
+.sidebar {
+  float: right;
+  background-color: transparent;
+  border: 1px solid #403030;
+  border-radius: 5px;
+  height: 592px;
+  width: 170px;
+  margin-right: 60px;
+  margin-top: 168px;
+  margin-left: 1px;
+}
+
+.next, .prev, .add {
+  font-size: 7em;
+  margin-top: 40px;
+  margin-left: 25px;
+  color: #403030;
+  &:focus, &:visited, *:hover {
+    outline: none;
+    text-decoration: none;
+    color: gray;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+
+#basicModal {
+  margin-top: 200px;
+}
+
+.solvemodal {
+  margin-top: 100px;
+  z-index: 9999;
+}
+
+.modal-footer{
+  .btn-primary {
+    background: #403030;
+  }
+}
+
+.ui .brown {
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.ui .grey {
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.list-group {
+  overflow: hidden;
+  margin: 3px 0px 0px 20px;
+  width: 532px;
+  border: transparent;
+}
+
+.list-group-submenu {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  white-space: nowrap;
+	list-style: none;
+	padding-left: 0px;
+}
+
+.list-group-submenu .list-group-submenu-item {
+	float: right;
+	white-space: nowrap;
+	display: block;
+	padding: 0;
+	margin-bottom: -1px;
+  font-size: 1em;
+  margin-top: 5px;
+  margin-right: 5px;
+  &:hover {
+    opacity: 0.7;
+  }
+  i {
+    margin-left: 3px;
+  }
+}
+
+.items {
+  height: 300px;
+  overflow: scroll;
+}
+
+.itemslist {
+  margin-bottom: 10px;
+}
+
+.newitem {
+  margin: 10px 0 10px 20px;
+  width: 532px;
+}
+
+.bucketeditform {
+  input {
+    width: 490px;
+    margin-left: 5px;
+    outline: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    &:focus {
+      border-color: #66afe9;
+      outline: 0;
+      z-index: 3;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+  }
+}
+
+.itemeditform {
+  input {
+    width: 430px;
+    margin-left: 5px;
+    outline: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    &:focus {
+      border-color: #66afe9;
+      outline: 0;
+      z-index: 3;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+  }
+}
